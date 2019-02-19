@@ -1,0 +1,22 @@
+{
+  "@pnp/generator-spfx": {
+    "framework": "none",
+    "pnpFramework": "vuejs",
+    "pnp-libraries": [
+      "@pnp/pnpjs"
+    ],
+    "pnp-vetting": [
+      "webpack-analyzer"
+    ]
+  },
+  "@microsoft/generator-sharepoint": {
+    "framework": "none",
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.7.1",
+    "libraryName": "to-do",
+    "libraryId": "ba0ed818-fc31-49ac-879f-4ba49d7433ec",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}
