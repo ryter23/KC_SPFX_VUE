@@ -12,7 +12,16 @@
     }
   },
   "externals": {
-    "vue": "./node_modules/vue/dist/vue.min.js"
+    "vue": "./node_modules/vue/dist/vue.min.js",
+    "jquery": {
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js",
+      "globalName": "jquery"
+    },
+    "bootstrap": {
+      "path": "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js",
+      "globalName": "bootstrap",
+      "globalDependencies": ["jquery"]
+    }
   },
   "localizedResources": {
     "ToDoWebPartStrings": "lib/webparts/toDo/loc/{locale}.js"

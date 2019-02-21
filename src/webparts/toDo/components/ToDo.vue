@@ -1,13 +1,24 @@
 <template>
     <div>
       <h1>Allgeier ToDo-List</h1>
-      <ul>
-        <li v-for="item in items" v-bind:key="item">
-          {{item.Value}} {{item.ID}} <button v-on:click="deleteItem(item.ID)">Delete</button>
+      <ul class="list-group">
+        <li v-for="item in items" v-bind:key="item" class="list-group-item">
+          {{item.Value}}
+          <button v-on:click="deleteItem(item.ID)" type="button" class="btn btn-default btn-sm" style="float: right;">
+            <span class="glyphicon glyphicon-trash"></span> 
+          </button>
         </li>
       </ul>
-      <input type="text" v-model="newItem" />
-      <button v-on:click="addItem(newItem)">Add</button>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input v-model="newItem" type="text" class="form-control">
+            <span class="input-group-btn"><!-- Append button addon using class input-group-lg -->
+              <button v-on:click="addItem(newItem)" class="btn btn-default" type="button">Add</button>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -22,6 +33,9 @@ export interface IToDoProps {
 }
 
 import { sp } from "@pnp/sp";
+import { SPComponentLoader } from '@microsoft/sp-loader';
+import 'jquery';
+require('bootstrap');
 
 /**
  * Class-component
@@ -40,7 +54,9 @@ export default class ToDo extends Vue implements IToDoProps {
      */
     constructor() {
       super();
-      
+      let cssURL = "https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css";
+      SPComponentLoader.loadCss(cssURL);
+
       this.loadListItems();
     }
 
@@ -79,7 +95,8 @@ export default class ToDo extends Vue implements IToDoProps {
 </script>
 
 <style lang="scss" module>
-@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/_SPFabricCore.scss';
+
+
 
 </style>
 
