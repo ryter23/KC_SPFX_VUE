@@ -20,7 +20,8 @@
     "description": { "default": "Simple ToDo App." },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "ToDo"
+      "description": "ToDo",
+      "itemsCanBeDeleted": true
     }
   }]
 }

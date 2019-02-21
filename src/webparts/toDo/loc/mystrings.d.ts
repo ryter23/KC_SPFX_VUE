@@ -2,6 +2,7 @@ declare interface IToDoWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
+  ItemsCanBeDeleted: string;
 }
 
 declare module 'ToDoWebPartStrings' {

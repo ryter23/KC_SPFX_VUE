@@ -4,7 +4,7 @@
       <ul class="list-group">
         <li v-for="item in items" v-bind:key="item" class="list-group-item">
           {{item.Value}}
-          <button v-on:click="deleteItem(item.ID)" type="button" class="btn btn-default btn-sm" style="float: right;">
+          <button v-on:click="deleteItem(item.ID)" type="button" class="btn btn-default btn-sm" style="float: right;" v-if="itemsCanBeDeleted">
             <span class="glyphicon glyphicon-trash"></span> 
           </button>
         </li>
@@ -30,6 +30,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
  */
 export interface IToDoProps {
     description: string;
+    itemsCanBeDeleted: boolean;
 }
 
 import { sp } from "@pnp/sp";
@@ -48,6 +49,9 @@ export default class ToDo extends Vue implements IToDoProps {
      */
     @Prop()
     public description: string;
+
+    @Prop()
+    public itemsCanBeDeleted: boolean;
 
     /**
      * Initialize ToDoList

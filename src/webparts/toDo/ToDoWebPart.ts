@@ -2,7 +2,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
@@ -17,6 +18,7 @@ import { sp } from "@pnp/sp";
 
 export interface IToDoWebPartProps {
   description: string;
+  itemsCanBeDeleted: boolean;
 }
 
 export default class ToDoWebPart extends BaseClientSideWebPart<IToDoWebPartProps> {
@@ -29,7 +31,8 @@ export default class ToDoWebPart extends BaseClientSideWebPart<IToDoWebPartProps
       el: `#${id}`,
       render: h => h(ToDoComponent, {
         props: {
-          description: this.properties.description
+          description: this.properties.description,
+          itemsCanBeDeleted: this.properties.itemsCanBeDeleted
         }
       })
     });
@@ -61,6 +64,10 @@ export default class ToDoWebPart extends BaseClientSideWebPart<IToDoWebPartProps
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneToggle('itemsCanBeDeleted', {
+                  label: strings.ItemsCanBeDeleted,
+                  checked: true
                 })
               ]
             }
